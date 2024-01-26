@@ -663,7 +663,9 @@ function countStudentsOnCourse(arr) {
   let result = [];
   for (let i = 0; i <= 3; i++) {
     let array = [...arr.filter((item) => item.course === i + 1)];
-    result.push({ studentsOnCourse: array.length });
+    result.push({
+      studentsOnCourse: { students: array.length, course: i + 1 },
+    });
   }
   return result;
 }

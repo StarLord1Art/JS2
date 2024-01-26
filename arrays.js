@@ -655,3 +655,132 @@ function sortedSights(arr) {
 }
 
 // console.log(sortedSights(sights));
+
+const apartments = [
+  { name: "Apartment 1", price: 1000000, rooms: 2 },
+  { name: "Apartment 2", price: 2000000, rooms: 3 },
+  { name: "Apartment 3", price: 1500000, rooms: 1 },
+  { name: "Apartment 4", price: 2500000, rooms: 4 },
+];
+
+function filterApartments(arr, maxPrice, minRooms) {
+  return arr.filter((item) => item.price <= maxPrice && item.rooms >= minRooms);
+}
+
+// console.log(filterApartments(apartments, 3000000, 4));
+
+const events = [
+  { название: "Концерт", тип: "музыка" },
+  { название: "Выставка", тип: "искусство" },
+  { название: "Спектакль", тип: "театр" },
+  { название: "Фестиваль", тип: "разное" },
+  { название: "Киносеанс", тип: "кино" },
+];
+
+function filterEventsByType(events, type) {
+  return events.filter((item) => item.тип === type);
+}
+
+// console.log(filterEventsByType(events, "кино"));
+
+const events2 = [
+  { название: "Концерт", тип: "музыка", дата: "2023-11-01" },
+  { название: "Выставка", тип: "искусство", дата: "2023-10-29" },
+  { название: "Спектакль", тип: "театр", дата: "2023-11-03" },
+  { название: "Фестиваль", тип: "разное", дата: "2023-11-02" },
+  { название: "Киносеанс", тип: "кино", дата: "2023-10-20" },
+];
+
+function getUpcomingEvents(events) {
+  return events
+    .filter((item) => new Date(item.дата) >= new Date())
+    .sort((a, b) => new Date(a.дата) - new Date(b.дата));
+}
+
+// console.log(getUpcomingEvents(events2));
+
+const users5 = ["John", "Jane", "Bob", "Alice", "Charlie"];
+
+for (let i = 0; i < users5.length; i++) {
+  const element = users5[i];
+  // console.log("Hello, " + element);
+}
+
+const users7 = [
+  { name: "John", age: 25 },
+  { name: "Jane", age: 30 },
+  { name: "Bob", age: 20 },
+  { name: "Alice", age: 35 },
+  { name: "Charlie", age: 28 },
+];
+
+let newUsers7 = users7.map((user) => user.name);
+// console.log(newUsers7);
+
+const numbers3 = [2, 4, 6, 8, 10];
+
+function checkNumbers(arr) {
+  return arr.every((num) => num % 2 === 0);
+}
+
+// console.log(checkNumbers(numbers3));
+
+const arr50 = [1, 2, 3, 2, 4, 1, 5, 1];
+
+function countDuplicates(arr) {
+  let obj = {};
+  arr.forEach((num) => (obj[num] = (obj[num] || 0) + 1));
+  return obj;
+}
+
+// function countDuplicates(arr) {
+//   const duplicates = {};
+
+//   for (const [key, value] of arr.entries()) {
+//     if (arr.indexOf(value) !== key) {
+//       if (duplicates[value]) {
+//         duplicates[value]++;
+//       } else {
+//         duplicates[value] = 1;
+//       }
+//     }
+//   }
+
+//   return duplicates;
+// }
+
+// console.log(countDuplicates(arr50));
+
+const person10 = {
+  name: "John",
+  age: 30,
+  occupation: "Engineer",
+};
+
+function getProperties(person) {
+  return Object.keys(person);
+}
+
+const properties = getProperties(person10);
+// console.log(properties);
+
+let availableProducts1 = ["футболка", "джинсы", "платье", "шляпа", "туфли"];
+let productToCheck1 = "платье";
+
+function check(arr, product) {
+  if (arr.includes(product)) {
+    return "ДА";
+  } else {
+    return "НЕТ";
+  }
+}
+
+// console.log(check(availableProducts1, productToCheck1));
+
+let a10 = [20, 30, 53, 52, 76, 89, 64, 21];
+let a11 = a10.map((num) => {
+  console.log(num);
+  return num + 1;
+});
+console.log(a11);
+console.log(typeof null);
