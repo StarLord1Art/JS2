@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container {
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+        }
+        .green {
+            background-color: green;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container green"></div>
+    <script>
+        let div = document.querySelector(".container")
+        div.onclick = () => {
+            // div.classList.toggle("green")
+            div.style = "background-color: red; border-radius: 50%"
+        }
+    </script>
+</body>
+</html>

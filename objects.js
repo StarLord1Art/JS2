@@ -91,7 +91,7 @@ class Animal {
 }
 
 let dog = new Animal("dog", "BenTen", 13);
-dog.sayHello();
+// dog.sayHello();
 
 class Rabbit extends Animal {
   constructor(type, name, age) {
@@ -110,4 +110,25 @@ class Rabbit extends Animal {
 let rabbit = new Rabbit("rabbit", "Peter", 21);
 rabbit.isJumping(true);
 rabbit.Blind(false);
-rabbit.sayHello();
+// rabbit.sayHello();
+
+// Promise
+const getRnMCharacter = async (id) => {
+  if (id === 0) {
+    throw "Invalid id";
+  }
+
+  const result = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+  const data = await result.json();
+
+  return data;
+};
+// getRnMCharacter(3)
+//   .then((res) => console.log(res))
+//   .catch();
+
+Promise.all([getRnMCharacter(1), getRnMCharacter(2), getRnMCharacter(3)])
+  .then((responses) =>
+    console.log(responses.forEach((el) => console.log(el.name)))
+  )
+  .catch((error) => console.log(error));
