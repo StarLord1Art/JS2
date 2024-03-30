@@ -779,8 +779,38 @@ function check(arr, product) {
 
 let a10 = [20, 30, 53, 52, 76, 89, 64, 21];
 let a11 = a10.map((num) => {
-  console.log(num);
+  // console.log(num);
   return num + 1;
 });
-console.log(a11);
-console.log(typeof null);
+// console.log(a11);
+// console.log(typeof null);
+
+const library = [
+  { title: "1984", author: "George Orwell", genre: "Триллер" },
+  { title: "Убить пересмешника", author: "Harper Lee", genre: "Роман" },
+  { title: "Великий Гэтсби", author: "F. Scott Fitzgerald", genre: "Роман" },
+  { title: "Brave New World", author: "Aldous Huxley", genre: "Триллер" },
+  { title: "Над пропастью во ржи", author: "J.D. Salinger", genre: "Роман" },
+];
+
+function filteredByGenre(arr, genre) {
+  return arr.filter((item) => item.genre === genre);
+}
+
+function getAllBookTitles(arr) {
+  return arr.map((item) => item.title);
+}
+
+function getAllUnicAuthors(arr) {
+  let arr2 = [];
+  arr.forEach((item) => {
+    if (!arr2.includes(item.author)) {
+      arr2.push(item.author);
+    }
+  });
+  return arr2;
+}
+
+// console.log(filteredByGenre(library, "Роман"));
+// console.log(getAllBookTitles(library));
+// console.log(getAllUnicAuthors(library));
