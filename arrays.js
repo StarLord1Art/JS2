@@ -814,3 +814,26 @@ function getAllUnicAuthors(arr) {
 // console.log(filteredByGenre(library, "Роман"));
 // console.log(getAllBookTitles(library));
 // console.log(getAllUnicAuthors(library));
+
+const goods = [
+  { name: "Футболка", price: 25 },
+  { name: "Джинсы", price: 50 },
+  { name: "Кроссовки", price: 80 },
+  { name: "Рубашка", price: 35 },
+];
+
+function getCertainGoods(arr, price) {
+  return arr.filter((good) => good.price > price);
+}
+
+function getAllGoodsNames(arr) {
+  return arr.map((good) => good.name);
+}
+
+function getTotalPrice(arr) {
+  return arr.reduce((total, good) => total + good.price, 0);
+}
+
+console.log(getCertainGoods(goods, 40));
+console.log(getAllGoodsNames(goods));
+console.log(getTotalPrice(goods));
