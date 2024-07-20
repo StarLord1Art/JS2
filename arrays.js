@@ -834,6 +834,285 @@ function getTotalPrice(arr) {
   return arr.reduce((total, good) => total + good.price, 0);
 }
 
-console.log(getCertainGoods(goods, 40));
-console.log(getAllGoodsNames(goods));
-console.log(getTotalPrice(goods));
+// console.log(getCertainGoods(goods, 40));
+// console.log(getAllGoodsNames(goods));
+// console.log(getTotalPrice(goods));
+
+const grades = [4, 5, 3, 5, 2, 4, 5, 3, 4, 5];
+
+function getStatistics(arr) {
+  averageGrade = arr.reduce((acc, grade) => acc + grade, 0) / arr.length;
+  maxGrade = arr.sort()[arr.length - 1];
+  minGrade = arr.sort()[0];
+  let studentsNumber = 0;
+  arr.forEach((grade) => {
+    if (grade > 2) {
+      studentsNumber += 1;
+    }
+  });
+  return [averageGrade, maxGrade, minGrade, studentsNumber];
+}
+
+// console.log(getStatistics(grades));
+
+const purchases = [
+  { item: "Laptop", price: 1000, quantity: 2 },
+  { item: "Phone", price: 500, quantity: 5 },
+  { item: "Tablet", price: 200, quantity: 3 },
+  { item: "Monitor", price: 300, quantity: 4 },
+];
+
+function getInfo(arr) {
+  let overallSum = arr.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+  let uniqueProducts = arr.length;
+  let averagePrice =
+    arr.reduce((acc, item) => acc + item.price, 0) / arr.length;
+  return { overallSum, uniqueProducts, averagePrice };
+}
+
+// console.log(getInfo(purchases));
+
+const purchases2 = [
+  { name: "Alice", item: "Apple", price: 50 },
+  { name: "Bob", item: "Banana", price: 30 },
+  { name: "Alice", item: "Orange", price: 70 },
+  { name: "Alice", item: "Banana", price: 30 },
+  { name: "Bob", item: "Apple", price: 50 },
+  { name: "Charlie", item: "Apple", price: 50 },
+  { name: "Charlie", item: "Banana", price: 30 },
+];
+
+function getOverallCustomerSum(arr) {
+  let obj = {};
+  for (let i = 0; i < arr.length; i++) {
+    const el = arr[i];
+    if (!Object.keys(obj).includes(el.name)) {
+      obj[el.name] = el.price;
+    } else {
+      obj[el.name] += el.price;
+    }
+  }
+  return obj;
+}
+
+// console.log(getOverallCustomerSum(purchases2));
+
+const comments = [
+  { user: "Alice", text: "Great article!", likes: 5 },
+  { user: "Bob", text: "Very informative.", likes: 8 },
+  { user: "Charlie", text: "I learned a lot.", likes: 3 },
+  { user: "David", text: "Thanks for sharing!", likes: 12 },
+  { user: "Eve", text: "Good read.", likes: 7 },
+];
+
+function getLikesSum(arr) {
+  return arr.reduce((sum, item) => sum + item.likes, 0);
+}
+
+function getMostLikedComment(arr) {
+  return arr.sort((a, b) => a.likes - b.likes)[arr.length - 1];
+}
+
+function getSortedComments(arr) {
+  let newarr = [...arr];
+  return newarr.sort((a, b) => b.likes - a.likes);
+}
+
+function getCommentsOnly(arr) {
+  return arr.map((item) => item.text);
+}
+
+// console.log(getLikesSum(comments));
+// console.log(getMostLikedComment(comments));
+// console.log(getSortedComments(comments));
+// console.log(getCommentsOnly(comments));
+
+const portfolio = [
+  { name: "Bitcoin", amount: 0.5 },
+  { name: "Ethereum", amount: 10 },
+  { name: "Ripple", amount: 1000 },
+  { name: "Litecoin", amount: 20 },
+];
+
+const exchangeRates = {
+  Bitcoin: 3000000,
+  Ethereum: 200000,
+  Ripple: 50,
+  Litecoin: 15000,
+};
+
+function calculatePortfolioValue(arr, obj) {
+  let balance = 0;
+  arr.forEach((el) => {
+    if (Object.keys(obj).includes(el.name)) {
+      balance += el.amount * obj[el.name];
+    }
+  });
+  return balance;
+}
+
+// return portfolio .filter(crypto => exchangeRates.hasOwnProperty(crypto.name)) .map(crypto => crypto.amount * exchangeRates[crypto.name]) .reduce((total, value) => total + value, 0); }
+
+// console.log(calculatePortfolioValue(portfolio, exchangeRates));
+
+/*<script src="https://code.responsivevoice.org/responsivevoice.js?key=lCWsS8Bc"></script>
+
+responsiveVoice.speak("Hello, this is a test!", "US English Female"); // "Russian Female"
+
+window.speechSynthesis.cancel();
+
+способ улучшения синтеза речи
+*/
+
+/*
+Задачи
+Подсчет среднего балла каждого студента.
+Нахождение студента с наивысшим средним баллом.
+Создание нового массива с именами студентов, поступивших в университет.
+Создание нового массива, содержащего только имена студентов и их средние баллы, отсортированного по среднему баллу в порядке убывания.
+*/
+
+const graduates = [
+  { name: "Иван", scores: [85, 90, 78], admitted: true },
+  { name: "Мария", scores: [80, 85, 88], admitted: false },
+  { name: "Алексей", scores: [90, 92, 85], admitted: true },
+  { name: "Ольга", scores: [70, 75, 72], admitted: false },
+  { name: "Елена", scores: [88, 82, 91], admitted: true },
+];
+
+function getAverageScore(arr) {
+  return arr.map((obj) => {
+    return {
+      name: obj.name,
+      avgscore:
+        obj.scores.reduce((acc, score) => (acc += score), 0) /
+        obj.scores.length,
+    };
+  });
+}
+
+function getMaxAverageScore(arr) {
+  return arr
+    .map((obj) => {
+      return {
+        name: obj.name,
+        avgscore:
+          obj.scores.reduce((acc, score) => (acc += score), 0) /
+          obj.scores.length,
+      };
+    })
+    .sort((a, b) => b.avgscore - a.avgscore)[0];
+}
+
+function getAdmittedStudentsNames(arr) {
+  return arr.filter((obj) => obj.admitted === true).map((obj) => obj.name);
+}
+
+function getSortedAverageScore(arr) {
+  return arr
+    .map((obj) => {
+      return {
+        name: obj.name,
+        avgscore:
+          obj.scores.reduce((acc, score) => (acc += score), 0) /
+          obj.scores.length,
+      };
+    })
+    .sort((a, b) => b.avgscore - a.avgscore);
+}
+
+// console.log(getAverageScore(graduates));
+// console.log(getMaxAverageScore(graduates));
+// console.log(getAdmittedStudentsNames(graduates));
+// console.log(getSortedAverageScore(graduates));
+
+/*
+Задачи
+Подсчет общего количества поданных заявлений.
+Подсчет среднего балла каждого абитуриента по всем предметам.
+Нахождение абитуриента с наивысшим средним баллом.
+Создание нового массива с именами абитуриентов, которые подали документы.
+Создание нового массива, содержащего только имена абитуриентов и их средние баллы, отсортированного по среднему баллу в порядке убывания.
+*/
+
+const applicants = [
+  {
+    name: "Иван",
+    scores: { math: 85, physics: 90, chemistry: 78 },
+    applied: true,
+  },
+  {
+    name: "Мария",
+    scores: { math: 80, physics: 85, chemistry: 88 },
+    applied: false,
+  },
+  {
+    name: "Алексей",
+    scores: { math: 90, physics: 92, chemistry: 85 },
+    applied: true,
+  },
+  {
+    name: "Ольга",
+    scores: { math: 70, physics: 75, chemistry: 72 },
+    applied: false,
+  },
+  {
+    name: "Елена",
+    scores: { math: 88, physics: 82, chemistry: 91 },
+    applied: true,
+  },
+];
+
+function getAppliedNumber(arr) {
+  return arr.filter((el) => el.applied === true).length;
+}
+
+function getAvScore(arr) {
+  return arr.map((el) => {
+    return {
+      name: el.name,
+      avScore:
+        Object.values(el.scores).reduce((acc, score) => (acc += score), 0) /
+        Object.values(el.scores).length,
+    };
+  });
+}
+
+function getMaxAvScore(arr) {
+  return arr
+    .map((el) => {
+      return {
+        name: el.name,
+        avScore:
+          Object.values(el.scores).reduce((acc, score) => (acc += score), 0) /
+          Object.values(el.scores).length,
+      };
+    })
+    .sort((a, b) => b.avScore - a.avScore)[0];
+}
+
+function getAppliedNames(arr) {
+  return arr.filter((el) => el.applied === true).map((el) => el.name);
+}
+
+function getSortedAvScore(arr) {
+  return arr
+    .map((el) => {
+      return {
+        name: el.name,
+        avScore:
+          Object.values(el.scores).reduce((acc, score) => (acc += score), 0) /
+          Object.values(el.scores).length,
+      };
+    })
+    .sort((a, b) => b.avScore - a.avScore);
+}
+
+// console.log(getAppliedNumber(applicants));
+// console.log(getAvScore(applicants));
+// console.log(getMaxAvScore(applicants));
+// console.log(getAppliedNames(applicants));
+console.log(getSortedAvScore(applicants));
